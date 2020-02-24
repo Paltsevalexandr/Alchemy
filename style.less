@@ -1,4 +1,9 @@
-@var: 22px;
+.position{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+};
 *{
   margin: 0;
   padding: 0;
@@ -8,7 +13,6 @@
   width: 100%;
   height: 100%;
   display: flex;
-  border: @var;
 }
 .capacityWrap{
   margin: 0 1%;
@@ -16,10 +20,7 @@
   height: 550px;
 }
 #container{
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  .position;
   padding: 20px 0;
   width: 65%;
   height: 550px;
@@ -27,11 +28,7 @@
   background-size: 100%;
 }
 .buttonWrapper{  
-  display: block;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-content: flex-start;
-  flex-wrap: wrap;
+  .position;
   width: 13%;
   height: 100%;
   padding-top: 30px;
