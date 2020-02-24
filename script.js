@@ -141,7 +141,6 @@ class createButton{
   constructor(text){
     this._text = text;
     this.makeButton(text);
-    
   }
   makeButton(text){
     var elemButton = document.createElement('button');
@@ -154,6 +153,9 @@ class createButton{
     buttonWrapper.append(elemButton);
   }
 }
+
+/******/
+
 class Element{
   constructor(container, elemClass, text){
     this._container = container;
@@ -170,7 +172,6 @@ class Element{
     elem.addEventListener('dragstart', function(event){
       particle = this;
       particleX = event.offsetX;
-      console.log(particleX);
       particleY = event.offsetY;
     });
     elem.addEventListener('drag', function(){
@@ -192,6 +193,7 @@ createCapacity(container){
     tank = capacity;
     container.appendChild(capacity);
     capacity.classList.add('capacity');
+    capacity.innerHTML = 'MIX ELEMENTS'
     capacity.addEventListener('dragover', function(event){
       event.preventDefault();
     });
@@ -203,11 +205,6 @@ createCapacity(container){
       particle.style.left = event.pageX + 'px';
       this.checkElemMass();
     });
-
-    var textArea = document.createElement('div');
-    textArea.classList.add('textArea');
-    container.prepend(textArea);
-    textArea.innerHTML = 'MIX ELEMENTS';
   } 
   checkElemMass(elemsForMix){
     var capacity = document.querySelector('.capacity');
