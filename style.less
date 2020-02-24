@@ -3,7 +3,11 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-};
+}
+.buttonsStyle(@borderColor, @backgroundColor){
+  border: solid 2px @borderColor;
+  background-color: @backgroundColor;
+}
 *{
   margin: 0;
   padding: 0;
@@ -75,6 +79,7 @@
   font-size: 16px;
   font-weight: bold;
   border-radius: 3px;
+  .buttonStyle(blue, red);
 }
 .createSoil{
   border: solid 2px brown;
