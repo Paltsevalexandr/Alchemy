@@ -75,29 +75,14 @@
   border-radius: 5px;
 }
 .create {
+  border: #000000 solid 2px;
+  background-color: #808080;
   width: 44%;
   height: 30px;
   margin: 0 0 15px 4%;
   font-size: 16px;
   font-weight: bold;
   border-radius: 3px;
-}
-.createSoil {
-  border: solid 2px brown;
-  background-color: #4b0a0a;
-  color: white;
-}
-.createAir {
-  border: inset 3px #cec3b5;
-  background-color: #d0dbdb;
-}
-.createFire {
-  border: inset 3px red;
-  background-color: pink;
-}
-.createWater {
-  border: outset 3px blue;
-  background-color: #adade0;
 }
 .element {
   display: flex;
@@ -108,56 +93,57 @@
   height: 55px;
   border-radius: 5px;
   font-size: 25px;
-  border: solid 2px black;
   background-size: 100%;
+  border: #000000 solid 2px;
+  background-color: #808080;
 }
 .element:hover {
   cursor: pointer;
 }
 .fire {
-  border: none;
-  /*background-color: pink;*/
+  border: #ff0000 solid 2px;
+  background-color: #f7aa46;
   background-image: url(image/fire.png);
 }
 .water {
-  border: none;
-  /*background-color: rgb(173, 173, 224);*/
+  border: #0000ff solid 2px;
+  background-color: #adade0;
   background-image: url(image/water.png);
 }
 .air {
-  border: solid 2px #cec3b5;
+  border: #cec3b5 solid 2px;
   background-color: #d0dbdb;
 }
 .soil {
-  border: solid 2px brown;
+  border: #a52a2a solid 2px;
   background-color: #4b0a0a;
 }
 .rock {
-  border: solid 2px grey;
+  border: #808080 solid 2px;
   background-color: #cec8c8;
 }
 .steam {
-  border: solid 2px #61a4db;
+  border: #61a4db solid 2px;
   background-color: #fcfcfc;
 }
 .mud {
-  border: solid 2px #5f5c5c;
+  border: #5f5c5c solid 2px;
   background-color: #742626;
 }
 .sand {
-  border: solid 2px grey;
-  background-color: yellow;
+  border: #808080 solid 2px;
+  background-color: #ffff00;
 }
 .dust {
-  border: solid 2px #5e5b5b;
+  border: #5e5b5b solid 2px;
   background-color: #918a8a;
 }
 .fog {
-  border: solid 2px #aadadb;
+  border: #aadadb solid 2px;
   background-color: #dbd2d2;
 }
 .wind {
-  border: solid 2px #94d6dd;
+  border: #94d6dd solid 2px;
   background-color: #d3c7c7;
 }
 .restoreButton {

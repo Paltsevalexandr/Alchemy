@@ -4,8 +4,8 @@
   align-items: flex-start;
   flex-wrap: wrap;
 }
-.buttonsStyle(@borderColor, @backgroundColor){
-  border: solid 2px @borderColor;
+.buttonsAndElemsStyle (@borderColor, @backgroundColor){
+  border: @borderColor solid 2px;
   background-color: @backgroundColor;
 }
 *{
@@ -73,30 +73,14 @@
   border-radius: 5px; 
 }
 .create{
+  .buttonsAndElemsStyle(black, grey);
   width: 44%;
   height: 30px;
   margin: 0 0 15px 4%;
   font-size: 16px;
   font-weight: bold;
   border-radius: 3px;
-  .buttonStyle(blue, red);
-}
-.createSoil{
-  border: solid 2px brown;
-  background-color: rgb(75, 10, 10);
-  color: white;
-}
-.createAir{
-  border: inset 3px rgb(206, 195, 181);
-  background-color: rgb(208, 219, 219);
-}
-.createFire{
-  border: inset 3px red;
-  background-color: pink;
-}
-.createWater{
-  border: outset 3px blue;
-  background-color: rgb(173, 173, 224);
+  
 }
 .element{
   display: flex;
@@ -107,58 +91,47 @@
   height: 55px;
   border-radius: 5px;
   font-size: 25px;
-  border: solid 2px black;
   background-size: 100%;
-}
-.element:hover{
+  .buttonsAndElemsStyle(black, grey);
+  &:hover{
   cursor: pointer;
+  }
 }
 .fire{
-  border: /*solid 2px red*/none;
-  /*background-color: pink;*/
+  .buttonsAndElemsStyle(red, rgb(247, 170, 70));
   background-image: url(image/fire.png);
 }
 .water{
-  border: /*solid 2px blue;*/none;
-  /*background-color: rgb(173, 173, 224);*/
+  .buttonsAndElemsStyle(blue, rgb(173, 173, 224));
   background-image: url(image/water.png);
 
 }
 .air{
-  border: solid 2px rgb(206, 195, 181);
-  background-color: rgb(208, 219, 219);
+  .buttonsAndElemsStyle(rgb(206, 195, 181), rgb(208, 219, 219));
 }
 .soil{
-  border: solid 2px brown;
-  background-color: rgb(75, 10, 10);
+  .buttonsAndElemsStyle(brown, rgb(75, 10, 10));
 }
 .rock{
-  border: solid 2px grey;
-  background-color: rgb(206, 200, 200);
+  .buttonsAndElemsStyle(grey, rgb(206, 200, 200));
 }
 .steam{
-  border: solid 2px rgb(97, 164, 219);
-  background-color: rgb(252, 252, 252);
+  .buttonsAndElemsStyle(rgb(97, 164, 219), rgb(252, 252, 252));
 }
 .mud{
-  border: solid 2px rgb(95, 92, 92);
-  background-color: rgb(116, 38, 38);
+  .buttonsAndElemsStyle(rgb(95, 92, 92), rgb(116, 38, 38));
 }
 .sand{
-  border: solid 2px grey;
-  background-color: yellow;
+  .buttonsAndElemsStyle(grey, yellow);
 }
 .dust{
-  border: solid 2px rgb(94, 91, 91);
-  background-color: rgb(145, 138, 138);
+  .buttonsAndElemsStyle(rgb(94, 91, 91), rgb(145, 138, 138));
 }
 .fog{
-  border: solid 2px rgb(170, 218, 219);
-  background-color: rgb(219, 210, 210);
+  .buttonsAndElemsStyle(rgb(170, 218, 219), rgb(219, 210, 210));
 }
 .wind{
-  border: solid 2px rgb(148, 214, 221);
-  background-color: rgb(211, 199, 199);
+  .buttonsAndElemsStyle(rgb(148, 214, 221), rgb(211, 199, 199));
 }
 .restoreButton{
   position: relative;
