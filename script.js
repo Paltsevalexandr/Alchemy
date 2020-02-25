@@ -1,7 +1,7 @@
 var gameWrapper = document.querySelector('.gameWrapper');
-var field = document.querySelector('#container'); //основное поле
-var buttonWrapper = document.querySelector('.buttonWrapper'); //контейнер для кнопок
-var capacityWrap = document.querySelector('.capacityWrap');//контейнер для размещения поля смешивания элементов и поля удаления элементов
+var field = document.querySelector('#container');
+var buttonWrapper = document.querySelector('.buttonWrapper');
+var capacityWrap = document.querySelector('.capacityWrap');
 var particle;//хранит последний перетянутый элемент
 var tank; //поле смешивания элементов
 var number;
@@ -182,17 +182,17 @@ class Capacity{
     }
     to_be_or_not_to_be(field, innerText){
       if (innerText !=false){
-        this.createElem(field, innerText, innerText);
+        this.createElem(field, innerText);
       }
       else{
         this.cannotMix();
       }
     }
-    createElem(field, elemClass, text){
+    createElem(field, elemName){
       this.deleteMixedElems();
-      new Element(field, elemClass, text);
-      this.checkButton(text);
-      this.newButton(text);
+      new Element(field, elemName);
+      this.checkButton(elemName);
+      this.newButton(elemName);
     }
     checkButton(text){
       var buttonWrapperChildren = buttonWrapper.querySelectorAll('button');
@@ -242,7 +242,7 @@ class createButton{
     elemButton.innerHTML = text;
     elemButton.addEventListener('click', (innerText)=>{
       innerText = elemButton.innerHTML;
-      new Element(field, innerText, innerText);
+      new Element(field, innerText);
     });
     buttonWrapper.append(elemButton);
   }
@@ -251,24 +251,24 @@ class createButton{
 /******/
 
 class Element{
-  constructor(container, elemClass, text){
+  constructor(container, elemName){
     this._container = container;
-    this._elemClass = elemClass;
-    this._text = text;
-    this._run(container, elemClass, text);
+    this._elemName = elemName;
+    this._run(container, elemName);
   }  
-  _run(container, elemClass, text){
+  _run(container, elemName){
     var elem = document.createElement('div');
     container.appendChild(elem);
     elem.draggable = true;
-    elem.innerHTML = text;
-    elem.classList.add(elemClass, 'element');
+    elem.innerHTML = elemName;
+    //elem.style.backgroundImage = 'url(image/'+elemName+'.png)';
+    elem.classList.add(elemName, 'element');
     elem.addEventListener('dragstart', function(event){
       particle = this;
       particleX = event.offsetX;
       particleY = event.offsetY;
     });
-    elem.addEventListener('drag', function(){
+    elem.addEventListener('drag', function(){ //позволяет перетаскивать элемент в другой контейнер, абсолютно позиционированный не перетаскивается
       elem.style.position = 'static';
       elem.style.display = 'none';
     });
@@ -303,8 +303,8 @@ var airButton = new createButton('air');
 var waterButton = new createButton('water');
 var soilButton = new createButton('soil');
 
-var fire = new Element(field, 'fire', '');
-var water = new Element(field, 'water', '');
+var fire = new Element(field, 'fire', 'fire');
+var water = new Element(field, 'water', 'water');
 var air = new Element(field, 'air', 'air');
 var soil = new Element(field, 'soil', 'soil');
 
@@ -334,7 +334,7 @@ function restoreProgress(){
   deleteExcessButtons();
   let savedButtons = JSON.parse(savedButtonsJson);
   for(var i = 0; i<savedButtons.length; i++){
-    var b = new createButton(savedButtons[i]);
+    var btn = new createButton(savedButtons[i]);
   }  
 }
 function deleteExcessButtons(){
