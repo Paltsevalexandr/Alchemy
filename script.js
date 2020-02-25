@@ -137,6 +137,100 @@ field.addEventListener('drop', function(event) {
   particle.style.display = 'flex';
   });
 
+class Capacity{
+    constructor(container){
+      this._container = container;
+      this.createCapacity(container);
+    }
+  createCapacity(container){
+      var capacity = document.createElement('div');
+      tank = capacity;
+      container.appendChild(capacity);
+      capacity.classList.add('capacity');
+      capacity.innerHTML = 'MIX ELEMENTS'
+      capacity.addEventListener('dragover', function(event){
+        event.preventDefault();
+      });
+      capacity.addEventListener('drop', (event)=> {
+        capacity.appendChild(particle);  
+        particle.style.display = 'flex';
+        particle.style.position = 'absolute';
+        particle.style.top = event.pageY - particleY + 'px';
+        particle.style.left = event.pageX - particleX + 'px';
+        this.checkElemMass();
+      });
+    } 
+    checkElemMass(elemsForMix){
+      var capacity = document.querySelector('.capacity');
+      elemsForMix = capacity.querySelectorAll('div');
+      if(elemsForMix.length==2){
+        this.chooseElement(elemsForMix);
+      }
+    }
+    chooseElement(elemsForMix, innerText){
+      innerText = false;
+      for(var i = 0; i<keys.length; i++){
+        if((elemsForMix[0].classList[0] == elementComponents[keys[i]][0]&&
+            elemsForMix[1].classList[0] == elementComponents[keys[i]][1])||
+           (elemsForMix[1].classList[0] == elementComponents[keys[i]][0]&&
+            elemsForMix[0].classList[0] == elementComponents[keys[i]][1])){
+          innerText = keys[i];
+          break;
+        }
+      }
+      this.to_be_or_not_to_be(field, innerText);
+    }
+    to_be_or_not_to_be(field, innerText){
+      if (innerText !=false){
+        this.createElem(field, innerText, innerText);
+      }
+      else{
+        this.cannotMix();
+      }
+    }
+    createElem(field, elemClass, text){
+      this.deleteMixedElems();
+      new Element(field, elemClass, text);
+      this.checkButton(text);
+      this.newButton(text);
+    }
+    checkButton(text){
+      var buttonWrapperChildren = buttonWrapper.querySelectorAll('button');
+      
+      for (var i = 0; i<buttonWrapperChildren.length; i++){   
+        if(buttonWrapperChildren[i].classList.contains(text)){
+          number = false;
+          break;
+        }
+        else{
+          number = true;
+        }
+      }
+    }
+    newButton(text){
+      if(number == true){
+        new createButton(text);
+        saveProgress();
+      }
+      number = false;
+    }
+    deleteMixedElems(){
+      var elems = tank.querySelectorAll('div');
+        for(var i = 0; i<elems.length; i++){
+          tank.removeChild(elems[i]);
+        }
+    }
+    cannotMix(){
+      alert('Cannot mix this elements');
+      var elems = tank.querySelectorAll('div');
+      for(var i = 0; i<elems.length; i++){
+        elems[i].style.position = 'static';
+        field.appendChild(elems[i]);
+      }
+    }
+  }
+
+/*****/  
 class createButton{
   constructor(text){
     this._text = text;
@@ -183,110 +277,8 @@ class Element{
     })
   }
 }
-class Capacity{
-  constructor(container){
-    this._container = container;
-    this.createCapacity(container);
-  }
-createCapacity(container){
-    var capacity = document.createElement('div');
-    tank = capacity;
-    container.appendChild(capacity);
-    capacity.classList.add('capacity');
-    capacity.innerHTML = 'MIX ELEMENTS'
-    capacity.addEventListener('dragover', function(event){
-      event.preventDefault();
-    });
-    capacity.addEventListener('drop', ()=> {
-      capacity.appendChild(particle);  
-      particle.style.display = 'flex';
-      particle.style.position = 'absolute';
-      particle.style.top = event.pageY + 'px';
-      particle.style.left = event.pageX + 'px';
-      this.checkElemMass();
-    });
-  } 
-  checkElemMass(elemsForMix){
-    var capacity = document.querySelector('.capacity');
-    elemsForMix = capacity.querySelectorAll('div');
-    if(elemsForMix.length==2){
-      this.chooseElement(elemsForMix);
-    }
-  }
-  chooseElement(elemsForMix, innerText){
-    innerText = false;
-    for(var i = 0; i<keys.length; i++){
-      if((elemsForMix[0].classList[0] == elementComponents[keys[i]][0]&&
-          elemsForMix[1].classList[0] == elementComponents[keys[i]][1])||
-         (elemsForMix[1].classList[0] == elementComponents[keys[i]][0]&&
-          elemsForMix[0].classList[0] == elementComponents[keys[i]][1])){
-        innerText = keys[i];
-        break;
-      }
-    }
-    this.to_be_or_not_to_be(field, innerText);
-  }
-  to_be_or_not_to_be(field, innerText){
-    if (innerText !=false){
-      this.createElem(field, innerText, innerText);
-    }
-    else{
-      this.cannotMix();
-    }
-  }
-  createElem(field, elemClass, text){
-    this.deleteMixedElems();
-    new Element(field, elemClass, text);
-    this.checkButton(text);
-    this.newButton(text);
-  }
-  /*checkButton(text){
-    for (var i = 0; i<buttonWrapper.children.length; i++){
-      if(buttonWrapper.children[i].matches('button.'+text) != true){
-        new createButton(text);
-        saveProgress();
-        break;
-      }
-    }
-  }*/
-  checkButton(text){
-    var buttonWrapperChildren = buttonWrapper.querySelectorAll('button');
-    
-    for (var i = 0; i<buttonWrapperChildren.length; i++){   
-      if(buttonWrapperChildren[i].classList.contains(text)){
-        number = false;
-        console.log(text);
-        break;
-      }
-      else{
-        number = true;
-        console.log('create');
-        console.log(text);
-      }
-    }
-  }
-  newButton(text){
-    if(number == true){
-      new createButton(text);
-      saveProgress();
-    }
-    number = false;
-  }
-  deleteMixedElems(){
-    var elems = tank.querySelectorAll('div');
-      for(var i = 0; i<elems.length; i++){
-        tank.removeChild(elems[i]);
-      }
-  }
-  cannotMix(){
-    alert('Cannot mix this elements');
-    var elems = tank.querySelectorAll('div');
-    for(var i = 0; i<elems.length; i++){
-      elems[i].style.position = 'static';
-      field.appendChild(elems[i]);
-    }
-  }
-}
+
+/*****/
 class DeleteArea{
   constructor(container){
     this._container = container;
