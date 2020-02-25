@@ -250,21 +250,27 @@ createCapacity(container){
     }
   }*/
   checkButton(text){
-    for (var i = 0; i<buttonWrapper.children.length; i++){
-      if(buttonWrapper.children[i].matches('button.'+text) != true){
-        number = 1;
+    var buttonWrapperChildren = buttonWrapper.querySelectorAll('button');
+    
+    for (var i = 0; i<buttonWrapperChildren.length; i++){   
+      if(buttonWrapperChildren[i].classList.contains(text)){
+        number = false;
+        console.log(text);
+        break;
       }
       else{
-        number = 2;
+        number = true;
+        console.log('create');
+        console.log(text);
       }
     }
   }
   newButton(text){
-    if(number == 1){
+    if(number == true){
       new createButton(text);
       saveProgress();
     }
-    number = 2;
+    number = false;
   }
   deleteMixedElems(){
     var elems = tank.querySelectorAll('div');

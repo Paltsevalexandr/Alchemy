@@ -93,7 +93,7 @@
   margin-right: 5.5px;
   border: #000000 solid 2px;
   background-color: #808080;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
   margin: 5px;
   display: flex;
@@ -112,7 +112,7 @@
     width: 40px;
     height: 40px;
     margin-right: 4px;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: bold;
   }
   .create {
