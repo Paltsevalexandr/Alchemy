@@ -17,6 +17,17 @@
   .gameWrapper {
     height: 450px;
   }
+  .buttonWrapper {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 480) {
+  .gameWrapper {
+    height: 450px;
+  }
+  .buttonWrapper {
+    flex-direction: column;
+  }
 }
 .buttonWrapperContainer {
   width: 13%;
@@ -34,7 +45,6 @@
   padding: 20px;
   height: 100%;
   background: url(image/game_background.jpg);
-  /*background-size: 100%;*/
 }
 .capacityWrap {
   display: flex;
@@ -62,7 +72,7 @@
   padding: 15px 5px;
   margin: 0 auto;
   background-color: #1f1a1a;
-  font-size: 25px;
+  font-size: 20px;
   color: blanchedalmond;
   border: solid 5px #363333;
   border-radius: 5px;

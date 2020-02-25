@@ -26,6 +26,17 @@
   .gameWrapper{
     height: 450px;
   }
+  .buttonWrapper{
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 480px){
+  .gameWrapper{
+    height: 300px;
+  }
+  .buttonWrapper{
+    flex-direction: column;
+  }
 }
 .buttonWrapperContainer{
   width: 13%;
@@ -33,6 +44,8 @@
 }
 .buttonWrapper{  
   .elementsPosition;
+  width: 100%;
+  background-color: red;
   padding-top: 30px;
 }
 #container{
@@ -42,7 +55,6 @@
   padding: 20px;
   height: 100%;
   background: url(image/game_background.jpg);
-  /*background-size: 100%;*/
 }
 .capacityWrap{
   display: flex;
@@ -70,7 +82,7 @@
   padding: 15px 5px;
   margin: 0 auto;
   background-color: rgb(31, 26, 26);
-  font-size: 25px;
+  font-size: 20px;
   color: blanchedalmond;
   border: solid 5px rgb(54, 51, 51);
   border-radius: 5px; 
@@ -104,6 +116,20 @@
   .element{
     .elementSizeAndMargin(40px)
   }
+  .create{
+    width: 100%;
+    height: 25px;
+  }
+}
+@media screen and (max-width: 480px){
+  .element{
+    .elementSizeAndMargin(30px);
+  }
+  .create{
+    width: 90%;
+    height: 20px;
+  }
+
 }
 .fire{
   .buttonsAndElemsStyle(red, rgb(247, 170, 70));
